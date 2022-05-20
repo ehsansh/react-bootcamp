@@ -37,7 +37,11 @@ class Hangman extends Component {
             .split('')
             .map(ltr => (this.state.guessed.has(ltr) ? ltr : '_'));
     }
-
+    hasWon() {
+        return this.state.answer
+            .split('')
+            .every(ltr => this.state.guessed.has(ltr));
+    }
     /** handleGuest: handle a guessed letter:
     - add to guessed letters
     - if not in answer, increase number-wrong guesses
@@ -72,6 +76,9 @@ class Hangman extends Component {
                 {this.state.nWrong === this.props.maxWrong && (
                     <p>You lose the correct word is {this.state.answer}</p>
                 )}
+
+                {this.hasWon() && <p>You win!</p>}
+
                 <button onClick={this.reset}>Reset</button>
             </div>
         );
