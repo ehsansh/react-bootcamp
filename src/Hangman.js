@@ -9,6 +9,8 @@ import img5 from './5.jpg';
 import img6 from './6.jpg';
 import { randomWord } from './words';
 
+import AlphaButtons from './AlphaButtons';
+
 class Hangman extends Component {
     /** by default, allow 6 guesses and use provided gallows images. */
     static defaultProps = {
@@ -19,7 +21,7 @@ class Hangman extends Component {
     constructor(props) {
         super(props);
         this.state = { nWrong: 0, guessed: new Set(), answer: randomWord() };
-        this.handleGuess = this.handleGuess.bind(this);
+        this.guess = this.guess.bind(this);
         this.reset = this.reset.bind(this);
     }
 
@@ -40,7 +42,7 @@ class Hangman extends Component {
     - add to guessed letters
     - if not in answer, increase number-wrong guesses
   */
-    handleGuess(evt) {
+    guess(evt) {
         let ltr = evt.target.value;
         this.setState(st => ({
             guessed: st.guessed.add(ltr),
@@ -49,18 +51,6 @@ class Hangman extends Component {
     }
 
     /** generateButtons: return array of letter buttons to render */
-    generateButtons() {
-        return 'abcdefghijklmnopqrstuvwxyz'.split('').map((ltr, i) => (
-            <button
-                key={i}
-                value={ltr}
-                onClick={this.handleGuess}
-                disabled={this.state.guessed.has(ltr)}
-            >
-                {ltr}
-            </button>
-        ));
-    }
 
     /** render: render game */
     render() {
@@ -73,7 +63,11 @@ class Hangman extends Component {
                 <p className='Hangman-word'>{this.guessedWord()}</p>
 
                 {this.state.nWrong < this.props.maxWrong && (
-                    <p className='Hangman-btns'>{this.generateButtons()}</p>
+                    <AlphaButtons
+                        guess={this.guess}
+                        letters='abcdefghijklmnopqrstuvwxyz'
+                        guessed={this.state.guessed}
+                    />
                 )}
                 {this.state.nWrong === this.props.maxWrong && (
                     <p>You lose the correct word is {this.state.answer}</p>
