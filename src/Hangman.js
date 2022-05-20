@@ -20,6 +20,11 @@ class Hangman extends Component {
         super(props);
         this.state = { nWrong: 0, guessed: new Set(), answer: randomWord() };
         this.handleGuess = this.handleGuess.bind(this);
+        this.reset = this.reset.bind(this);
+    }
+
+    reset() {
+        this.setState({ nWrong: 0, guessed: new Set(), answer: randomWord() });
     }
 
     /** guessedWord: show current-state of word:
@@ -73,6 +78,7 @@ class Hangman extends Component {
                 {this.state.nWrong === this.props.maxWrong && (
                     <p>You lose the correct word is {this.state.answer}</p>
                 )}
+                <button onClick={this.reset}>Reset</button>
             </div>
         );
     }
