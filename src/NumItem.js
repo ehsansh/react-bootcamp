@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class NumItem extends Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
     }
-    handleClick() {
+    handleRemove() {
         this.props.remove(this.props.value);
     }
     render() {
@@ -13,7 +13,7 @@ class NumItem extends Component {
         return (
             <div>
                 {value}
-                <button onClick={this.handleClick}>X</button>
+                <button onClick={this.handleRemove}>X</button>
             </div>
         );
     }
