@@ -66,14 +66,13 @@ class Hangman extends Component {
                 <p>Number wrong: {this.state.nWrong}</p>
                 <p className='Hangman-word'>{this.guessedWord()}</p>
 
-                {this.state.nWrong < this.props.maxWrong && (
+                {this.state.nWrong < this.props.maxWrong ? (
                     <AlphaButtons
                         guess={this.guess}
                         letters='abcdefghijklmnopqrstuvwxyz'
                         guessed={this.state.guessed}
                     />
-                )}
-                {this.state.nWrong === this.props.maxWrong && (
+                ) : (
                     <p>You lose the correct word is {this.state.answer}</p>
                 )}
 
