@@ -1,7 +1,6 @@
-import React, {Component} from "react";
-import Cell from "./Cell";
+import React, { Component } from 'react';
+import Cell from './Cell';
 import './Board.css';
-
 
 /** Game board of Lights out.
  *
@@ -30,59 +29,77 @@ import './Board.css';
  **/
 
 class Board extends Component {
+    static defaultProps = {
+        nrows: 5,
+        ncols: 5,
+        chanceLightStartsOn: 0.25,
+    };
+    constructor(props) {
+        super(props);
 
-  constructor(props) {
-    super(props);
-
-    // TODO: set initial state
-  }
-
-  /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
-
-  createBoard() {
-    let board = [];
-    // TODO: create array-of-arrays of true/false values
-    return board
-  }
-
-  /** handle changing a cell: update board & determine if winner */
-
-  flipCellsAround(coord) {
-    let {ncols, nrows} = this.props;
-    let board = this.state.board;
-    let [y, x] = coord.split("-").map(Number);
-
-
-    function flipCell(y, x) {
-      // if this coord is actually on board, flip it
-
-      if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
-        board[y][x] = !board[y][x];
-      }
+        // TODO: set initial state
+        this.state = {
+            hasWon: false,
+            board: this.createBoard(),
+        };
     }
 
-    // TODO: flip this cell and the cells around it
+    /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
 
-    // win when every cell is turned off
-    // TODO: determine is the game has been won
+    createBoard() {
+        // TODO: create array-of-arrays of true/false values
 
-    this.setState({board, hasWon});
-  }
+        // let board = Array.from({ length: this.props.nrows }, () => {
+        //     return Array.from(
+        //         { length: this.props.ncols },
+        //         () => Math.random() < this.props.chanceLightStartsOn
+        //     );
+        // });
 
+        let board = Array(this.props.nrows)
+            .fill(null)
+            .map(el => {
+                return Array.from(
+                    { length: this.props.ncols },
+                    () => Math.random() < this.props.chanceLightStartsOn
+                );
+            });
 
-  /** Render game board or winning message. */
+        return board;
+    }
 
-  render() {
+    /** handle changing a cell: update board & determine if winner */
 
-    // if the game is won, just show a winning msg & render nothing else
+    flipCellsAround(coord) {
+        let { ncols, nrows } = this.props;
+        let board = this.state.board;
+        let [y, x] = coord.split('-').map(Number);
 
-    // TODO
+        function flipCell(y, x) {
+            // if this coord is actually on board, flip it
 
-    // make table board
+            if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
+                board[y][x] = !board[y][x];
+            }
+        }
 
-    // TODO
-  }
+        // TODO: flip this cell and the cells around it
+
+        // win when every cell is turned off
+        // TODO: determine is the game has been won
+
+        // this.setState({ board, hasWon });
+    }
+
+    /** Render game board or winning message. */
+
+    render() {
+        // if the game is won, just show a winning msg & render nothing else
+        // TODO
+        // make table board
+        // TODO
+        return <h1>boards</h1>;
+    }
 }
-
 
 export default Board;
