@@ -1,0 +1,12 @@
+.cells-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 510px;
+    margin: 100px auto;
+}
+.cell {
+    width: 100px;
+    height: 100px;
+    margin: 1px;
+    background-color: aqua;
+}
