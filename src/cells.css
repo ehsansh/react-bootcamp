@@ -10,3 +10,6 @@
     margin: 1px;
     background-color: aqua;
 }
+.cell.active {
+    background-color: blueviolet;
+}
