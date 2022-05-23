@@ -98,11 +98,11 @@ class Board extends Component {
         // TODO
         // make table board
         // TODO
-        let tblBoard = this.state.board.map(row => {
+        let tblBoard = this.state.board.map((row, rowIndex) => {
             return (
-                <tr>
-                    {row.map(lit => (
-                        <Cell isLit={lit} />
+                <tr key={rowIndex}>
+                    {row.map((lit, cellIndex) => (
+                        <Cell key={`${rowIndex}-${cellIndex}`} isLit={lit} />
                     ))}
                 </tr>
             );
