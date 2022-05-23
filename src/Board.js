@@ -98,7 +98,20 @@ class Board extends Component {
         // TODO
         // make table board
         // TODO
-        return <h1>boards</h1>;
+        let tblBoard = this.state.board.map(row => {
+            return (
+                <tr>
+                    {row.map(lit => (
+                        <Cell isLit={lit} />
+                    ))}
+                </tr>
+            );
+        });
+        return (
+            <table className='Board'>
+                <tbody>{tblBoard}</tbody>
+            </table>
+        );
     }
 }
 
