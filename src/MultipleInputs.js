@@ -26,6 +26,7 @@ class MultipleInputs extends Component {
     render() {
         return (
             <div>
+                <h1>Multiple inputs</h1>
                 username is {this.state.username} <br />
                 email is {this.state.email}
                 <form>
