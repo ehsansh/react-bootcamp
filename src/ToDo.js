@@ -6,10 +6,19 @@ export default class ToDo extends Component {
         this.state = {
             edit: false,
             editText: this.props.todo,
+            complete: false,
         };
         this.changeHandler = this.changeHandler.bind(this);
         this.editToDoHandler = this.editToDoHandler.bind(this);
         this.activeEdit = this.activeEdit.bind(this);
+        this.completeToggle = this.completeToggle.bind(this);
+    }
+    completeToggle() {
+        this.setState(st => {
+            return {
+                complete: !st.complete,
+            };
+        });
     }
     changeHandler(evt) {
         this.setState({
@@ -25,6 +34,8 @@ export default class ToDo extends Component {
         this.setState({ edit: true });
     }
     render() {
+        let style = null;
+        if (this.state.complete) style = { textDecoration: 'line-through' };
         return (
             <div>
                 {this.state.edit ? (
@@ -40,7 +51,9 @@ export default class ToDo extends Component {
                         <button>submit</button>
                     </form>
                 ) : (
-                    <div>{this.props.todo}</div>
+                    <div style={style} onClick={this.completeToggle}>
+                        {this.props.todo}
+                    </div>
                 )}
                 <button onClick={this.activeEdit}>edit todo</button>
                 <button onClick={this.props.remove}>X</button>

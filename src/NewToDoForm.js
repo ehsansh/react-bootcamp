@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class NewToDoForm extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             todo: '',
         };
