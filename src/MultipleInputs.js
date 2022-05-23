@@ -29,6 +29,7 @@ class MultipleInputs extends Component {
                 username is {this.state.username} <br />
                 email is {this.state.email}
                 <form>
+                    <label htmlFor='username'>username</label>
                     <input
                         type='text'
                         name='username'
