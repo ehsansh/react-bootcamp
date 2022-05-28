@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
 import './Die.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faDiceOne,
+    faDiceTwo,
+    faDiceThree,
+    faDiceFour,
+    faDiceFive,
+    faDiceSix,
+} from '@fortawesome/fontawesome-free-solid';
+
 class Die extends Component {
+    static defaultProps = {
+        icons: [
+            faDiceOne,
+            faDiceTwo,
+            faDiceThree,
+            faDiceFour,
+            faDiceFive,
+            faDiceSix,
+        ],
+    };
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -11,15 +31,16 @@ class Die extends Component {
     }
     render() {
         return (
-            <button
-                className={'Die'}
+            <FontAwesomeIcon
                 style={{
                     backgroundColor: this.props.locked ? 'grey' : 'black',
                 }}
                 onClick={this.handleClick}
-            >
-                {this.props.val}
-            </button>
+                icon={this.props.icons[this.props.val - 1]}
+                className={'Die'}
+                size='5x'
+                color='white'
+            />
         );
     }
 }
