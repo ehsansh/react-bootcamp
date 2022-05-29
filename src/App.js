@@ -1,4 +1,5 @@
 import './App.css';
+import GithubUserInfo from './GithubUserInfo';
 import Timer from './Timer';
 import ZenQuote from './ZenQuote';
 
@@ -7,6 +8,9 @@ function App() {
         <div className='App'>
             {/* <Timer /> */}
             <ZenQuote />
+            <GithubUserInfo username='facebook' />
+            <GithubUserInfo username='colt' />
+            <GithubUserInfo username='ehsansh' />
         </div>
     );
 }
