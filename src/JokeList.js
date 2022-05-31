@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Joke from './Joke';
+import { v4 as uuid } from 'uuid';
 
 export default class JokeList extends Component {
     static defaultProps = {
@@ -9,6 +11,14 @@ export default class JokeList extends Component {
         this.state = {
             jokes: [],
         };
+        this.handleVote = this.handleVote.bind(this);
+    }
+    handleVote(id, change) {
+        this.setState(st => ({
+            jokes: st.jokes.map(j =>
+                j.id === id ? { ...j, votes: j.votes + change } : j
+            ),
+        }));
     }
     async componentDidMount() {
         let jokes = [];
@@ -20,7 +30,7 @@ export default class JokeList extends Component {
                 },
             });
             const data = await response.json();
-            jokes.push(data.joke);
+            jokes.push({ id: uuid(), text: data.joke, votes: 0 });
         }
         this.setState({ jokes: jokes });
     }
@@ -28,9 +38,18 @@ export default class JokeList extends Component {
         return (
             <div>
                 <h1>joke list</h1>
+                <div className='sidebar'>
+                    <button>new jokes</button>
+                </div>
                 <div>
                     {this.state.jokes.map(j => (
-                        <div>{j}</div>
+                        <Joke
+                            upvote={() => this.handleVote(j.id, 1)}
+                            downvote={() => this.handleVote(j.id, -1)}
+                            key={j.id}
+                            votes={j.votes}
+                            text={j.text}
+                        />
                     ))}
                 </div>
             </div>
