@@ -10,6 +10,7 @@ export default class JokeList extends Component {
         super(props);
         this.state = {
             jokes: JSON.parse(window.localStorage.getItem('jokes')) || [],
+            loading: false,
         };
         this.handleVote = this.handleVote.bind(this);
         this.getJokes = this.getJokes.bind(this);
@@ -20,7 +21,7 @@ export default class JokeList extends Component {
         if (this.state.jokes.length === 0) this.getJokes();
     }
     handleClick() {
-        this.getJokes();
+        this.setState({ loading: true }, this.getJokes);
     }
     handleVote(id, change) {
         this.setState(
@@ -51,6 +52,7 @@ export default class JokeList extends Component {
         this.setState(
             st => ({
                 jokes: [...st.jokes, ...jokes],
+                loading: false,
             }),
             () =>
                 window.localStorage.setItem(
@@ -60,6 +62,7 @@ export default class JokeList extends Component {
         );
     }
     render() {
+        if (this.state.loading) return <h1>loading...</h1>;
         return (
             <div>
                 <h1>joke list</h1>
