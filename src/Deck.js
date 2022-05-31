@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from './Card';
 const API_BASE_URL = 'https://deckofcardsapi.com/api/deck';
 
 export default class Deck extends Component {
@@ -40,10 +41,14 @@ export default class Deck extends Component {
         } catch (e) {}
     }
     render() {
+        const cards = this.state.drawn.map(c => (
+            <Card key={c.id} image={c.image} />
+        ));
         return (
             <div>
                 <h1>deck</h1>
                 <button onClick={this.getCard}>Get Card</button>
+                {cards}
             </div>
         );
     }
