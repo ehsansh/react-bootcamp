@@ -13,16 +13,28 @@ export default class JokeList extends Component {
         };
         this.handleVote = this.handleVote.bind(this);
         this.getJokes = this.getJokes.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
-    handleVote(id, change) {
-        this.setState(st => ({
-            jokes: st.jokes.map(j =>
-                j.id === id ? { ...j, votes: j.votes + change } : j
-            ),
-        }));
-    }
+
     componentDidMount() {
         if (this.state.jokes.length === 0) this.getJokes();
+    }
+    handleClick() {
+        this.getJokes();
+    }
+    handleVote(id, change) {
+        this.setState(
+            st => ({
+                jokes: st.jokes.map(j =>
+                    j.id === id ? { ...j, votes: j.votes + change } : j
+                ),
+            }),
+            () =>
+                window.localStorage.setItem(
+                    'jokes',
+                    JSON.stringify(this.state.jokes)
+                )
+        );
     }
     async getJokes() {
         let jokes = [];
@@ -36,15 +48,23 @@ export default class JokeList extends Component {
             const data = await response.json();
             jokes.push({ id: uuid(), text: data.joke, votes: 0 });
         }
-        this.setState({ jokes: jokes });
-        window.localStorage.setItem('jokes', JSON.stringify(jokes));
+        this.setState(
+            st => ({
+                jokes: [...st.jokes, ...jokes],
+            }),
+            () =>
+                window.localStorage.setItem(
+                    'jokes',
+                    JSON.stringify(this.state.jokes)
+                )
+        );
     }
     render() {
         return (
             <div>
                 <h1>joke list</h1>
                 <div className='sidebar'>
-                    <button>new jokes</button>
+                    <button onClick={this.handleClick}>new jokes</button>
                 </div>
                 <div>
                     {this.state.jokes.map(j => (
