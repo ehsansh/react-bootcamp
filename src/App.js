@@ -6,11 +6,13 @@ import Chips from './Chips';
 import Sardines from './Sardines';
 import Soda from './Soda';
 import { Route, Routes } from 'react-router-dom';
+import NavBar from './NavBar';
 
 export default class App extends Component {
     render() {
         return (
             <div>
+                <NavBar />
                 <Routes>
                     <Route exact path='/' element={<VendingMachine />} />
                     <Route exact path='chips' element={<Chips />} />
