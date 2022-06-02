@@ -22,7 +22,11 @@ export default class App extends Component {
                 </nav>
                 <Routes>
                     <Route exact path='/' element={<Home />} />
-                    <Route exact path='/about' element={<About />} />
+                    <Route
+                        exact
+                        path='/about'
+                        element={<About name='ehsan' />}
+                    />
                     <Route exact path='/contact' element={<Contact />} />
                 </Routes>
             </div>
