@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, NavLink } from 'react-router-dom';
 import Contact from './Contact';
 import About from './About';
 import Home from './Home';
@@ -10,9 +10,15 @@ export default class App extends Component {
         return (
             <div>
                 <nav>
-                    <Link to='/'>Home</Link>
-                    <Link to='/about'>About</Link>
-                    <Link to='/contact'>Contact</Link>
+                    <NavLink activeclassname='true' exact='true' to='/'>
+                        Home
+                    </NavLink>
+                    <NavLink activeclassname='true' exact='true' to='/about'>
+                        About
+                    </NavLink>
+                    <NavLink activeclassname='true' exact='true' to='/contact'>
+                        Contact
+                    </NavLink>
                 </nav>
                 <Routes>
                     <Route exact path='/' element={<Home />} />
