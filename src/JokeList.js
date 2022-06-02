@@ -73,15 +73,17 @@ export default class JokeList extends Component {
                     <button onClick={this.handleClick}>new jokes</button>
                 </div>
                 <div>
-                    {this.state.jokes.map(j => (
-                        <Joke
-                            upvote={() => this.handleVote(j.id, 1)}
-                            downvote={() => this.handleVote(j.id, -1)}
-                            key={j.id}
-                            votes={j.votes}
-                            text={j.text}
-                        />
-                    ))}
+                    {this.state.jokes
+                        .sort((a, b) => b.votes - a.votes)
+                        .map(j => (
+                            <Joke
+                                upvote={() => this.handleVote(j.id, 1)}
+                                downvote={() => this.handleVote(j.id, -1)}
+                                key={j.id}
+                                votes={j.votes}
+                                text={j.text}
+                            />
+                        ))}
                 </div>
             </div>
         );
