@@ -12,6 +12,7 @@ export default class JokeList extends Component {
             jokes: JSON.parse(window.localStorage.getItem('jokes')) || [],
             loading: false,
         };
+        this.seenJokes = new Set(this.state.jokes.map(j => j.text));
         this.handleVote = this.handleVote.bind(this);
         this.getJokes = this.getJokes.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -47,7 +48,9 @@ export default class JokeList extends Component {
                 },
             });
             const data = await response.json();
-            jokes.push({ id: uuid(), text: data.joke, votes: 0 });
+            if (!this.seenJokes.has(data.joke)) {
+                jokes.push({ id: uuid(), text: data.joke, votes: 0 });
+            }
         }
         this.setState(
             st => ({
