@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default class Food extends Component {
-    render() {
-        const url = `https://source.unsplash.com/800x600/?${this.props.name}`;
-        return (
-            <div>
-                <h1>this is a {this.props.name}</h1>
-                <img src={url} alt={this.props.name} />
-            </div>
-        );
-    }
+function Food() {
+    const { name } = useParams();
+    const url = `https://source.unsplash.com/600x600/?${name}`;
+    return (
+        <div>
+            <h1>this is a {name}</h1>
+            <img src={url} alt={name} />
+        </div>
+    );
 }
+
+export default Food;

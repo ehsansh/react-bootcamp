@@ -1,9 +1,12 @@
 import './App.css';
 import Food from './Food';
+import { Route, Routes } from 'react-router-dom';
 function App() {
     return (
         <div className='App'>
-            <Route />
+            <Routes>
+                <Route exact path='/food/:name' element={<Food />} />
+            </Routes>
         </div>
     );
 }
