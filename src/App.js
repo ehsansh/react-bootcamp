@@ -10,8 +10,8 @@ export default class App extends Component {
             <div>
                 App
                 <Routes>
-                    <Route path='/about' element={<About />} />
-                    <Route path='/contact' element={<Contact />} />
+                    <Route exact path='/about' element={<About />} />
+                    <Route exact path='/contact' element={<Contact />} />
                 </Routes>
             </div>
         );
