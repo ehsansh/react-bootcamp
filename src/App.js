@@ -1,7 +1,6 @@
 import './App.css';
 import Food from './Food';
 import Meal from './Meal';
-
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import NotFound from './NotFound';

@@ -42,6 +42,7 @@ function FoodSearch() {
     };
     return (
         <div>
+            <button onClick={() => navigate(-1)}>go back</button>
             <input
                 onChange={event => setQuery(event.target.value)}
                 type='text'
