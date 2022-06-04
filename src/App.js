@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import DogList from './DogList';
-import DogDeatils from './DogDetails';
+import AppRoutes from './AppRoutes';
 import Navbar from './Navbar';
-import { Route, Routes } from 'react-router-dom';
 import whiskey from './imgs/whiskey.jpg';
 import hazel from './imgs/hazel.jpg';
 import tubby from './imgs/tubby.jpg';
@@ -46,18 +44,7 @@ export default class App extends Component {
         return (
             <div>
                 <Navbar dogs={this.props.dogs} />
-                <Routes>
-                    <Route
-                        exact
-                        path='/dogs'
-                        element={<DogList dogs={this.props.dogs} />}
-                    />
-                    <Route
-                        exact
-                        path='/dogs/:name'
-                        element={<DogDeatils name dogs={this.props.dogs} />}
-                    />
-                </Routes>
+                <AppRoutes dogs={this.props.dogs} />
             </div>
         );
     }
