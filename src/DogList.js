@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 function DogList(props) {
     return (
         <div>
@@ -7,7 +8,9 @@ function DogList(props) {
                     {props.dogs.map(d => (
                         <div key={d.name} className='col-lg-4 text-center'>
                             <img width='75%' src={d.src} alt={d.name} />
-                            <h3>{d.name}</h3>
+                            <h3>
+                                <Link to={`/dogs/${d.name}`}>{d.name}</Link>
+                            </h3>
                         </div>
                     ))}
                 </div>
