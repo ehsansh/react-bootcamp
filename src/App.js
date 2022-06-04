@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DogList from './DogList';
+import DogDeatils from './DogDetails';
 import { Route, Routes } from 'react-router-dom';
 import whiskey from './imgs/whiskey.jpg';
 import hazel from './imgs/hazel.jpg';
@@ -45,8 +46,14 @@ export default class App extends Component {
             <div>
                 <Routes>
                     <Route
+                        exact
                         path='/dogs'
                         element={<DogList dogs={this.props.dogs} />}
+                    />
+                    <Route
+                        exact
+                        path='/dogs/:name'
+                        element={<DogDeatils name dogs={this.props.dogs} />}
                     />
                 </Routes>
             </div>
