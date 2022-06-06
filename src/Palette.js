@@ -30,7 +30,7 @@ export default class Palette extends Component {
         return (
             <div className='Palette'>
                 <Navbar
-                    handleChange={this.changeFormat}
+                    handleFormatChange={this.changeFormat}
                     level={level}
                     changeLevel={this.changeLevel}
                 />
