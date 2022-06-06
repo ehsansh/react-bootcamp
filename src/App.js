@@ -6,16 +6,17 @@ import { generatePalette } from './colorHelpers';
 function App() {
     return (
         <Routes>
-            <Route
-                exact
-                path='/palette/:id'
-                element={<Palette palette={generatePalette(seedColors[0])} />}
-            />
+            {seedColors.map((s, i) => {
+                return (
+                    <Route
+                        key={i}
+                        exact
+                        path={`/palette/${s.id}`}
+                        element={<Palette palette={generatePalette(s)} />}
+                    />
+                );
+            })}
         </Routes>
-
-        // <div className='App'>
-        //     <Palette palette={generatePalette(seedColors[0])} />
-        // </div>
     );
 }
 
