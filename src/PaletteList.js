@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import MiniPalette from './MiniPalette';
 
-const Root = styled('div')`
+const Root = styled.div`
     background-color: blue;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
 `;
 
-const Container = styled('div')`
+const Container = styled.div`
     width: 50%;
     display: flex;
     align-items: flex-start;
@@ -19,14 +19,14 @@ const Container = styled('div')`
     flex-wrap: wrap;
 `;
 
-const Nav = styled('nav')`
+const Nav = styled.nav`
     display: flex;
     width: 100%;
     justify-content: space-between;
     color: white;
 `;
 
-const Palettes = styled('div')`
+const Palettes = styled.div`
     box-sizing: border-box;
     width: 100%;
     display: grid;

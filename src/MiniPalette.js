@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Root = styled('div')`
+const Root = styled.div`
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -12,29 +12,48 @@ const Root = styled('div')`
     }
 `;
 
-const Colors = styled('div')`
-    background-color: grey;
-`;
-
-const Title = styled('h5')`
+const Title = styled.h5`
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0;
     color: black;
     padding-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     position: relative;
 `;
-const Emoji = styled('span')`
+const Emoji = styled.span`
     margin-left: 0.5rem;
     font-size: 1.5rem;
 `;
 
+const Colors = styled.div`
+    background-color: #dae1e4;
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+`;
+
+const MiniColor = styled.div`
+    background-color: ${props => props.bg};
+    height: 25%;
+    width: 20%;
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: -3.5px;
+`;
+
 function App(props) {
-    const { classes, paletteName, emoji } = props;
+    const { classes, paletteName, emoji, colors } = props;
+    const miniColorBoxes = colors.map(color => (
+        <MiniColor key={color.name} bg={color.color} />
+    ));
+    console.log(miniColorBoxes);
     return (
         <Root>
+            <Colors>{miniColorBoxes}</Colors>
             <Title>
                 {paletteName} <Emoji>{emoji}</Emoji>
             </Title>
