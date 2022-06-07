@@ -50,9 +50,8 @@ function App(props) {
     const miniColorBoxes = colors.map(color => (
         <MiniColor key={color.name} bg={color.color} />
     ));
-    console.log(miniColorBoxes);
     return (
-        <Root>
+        <Root onClick={props.handleClick}>
             <Colors>{miniColorBoxes}</Colors>
             <Title>
                 {paletteName} <Emoji>{emoji}</Emoji>

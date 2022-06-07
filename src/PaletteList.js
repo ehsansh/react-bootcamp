@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import MiniPalette from './MiniPalette';
 
@@ -34,22 +35,46 @@ const Palettes = styled.div`
     grid-gap: 5%;
 `;
 
-export default class PaletteList extends Component {
-    render() {
-        const { palettes } = this.props;
-        return (
-            <Root>
-                <Container>
-                    <Nav>
-                        <h1>React Colors</h1>
-                    </Nav>
-                    <Palettes>
-                        {palettes.map(p => (
-                            <MiniPalette {...p} />
-                        ))}
-                    </Palettes>
-                </Container>
-            </Root>
-        );
-    }
+function PaletteList(props) {
+    const { palettes } = props;
+    let navigate = useNavigate();
+    const goToPalette = function (id) {
+        navigate(`/palette/${id}`);
+    };
+    return (
+        <Root>
+            <Container>
+                <Nav>
+                    <h1>React Colors</h1>
+                </Nav>
+                <Palettes>
+                    {palettes.map(p => (
+                        <MiniPalette handleClick={() => goToPalette(p.id)} {...p} />
+                    ))}
+                </Palettes>
+            </Container>
+        </Root>
+    );
 }
+
+export default PaletteList;
+
+// export default class PaletteList extends Component {
+//     render() {
+//         const { palettes } = this.props;
+//         return (
+//             <Root>
+//                 <Container>
+//                     <Nav>
+//                         <h1>React Colors</h1>
+//                     </Nav>
+//                     <Palettes>
+//                         {palettes.map(p => (
+//                             <MiniPalette {...p} />
+//                         ))}
+//                     </Palettes>
+//                 </Container>
+//             </Root>
+//         );
+//     }
+// }
