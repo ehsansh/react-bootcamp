@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Root = styled('div')/*css*/ `
+const Root = styled('div')`
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -12,11 +12,11 @@ const Root = styled('div')/*css*/ `
     }
 `;
 
-const Colors = styled('div')/*css*/ `
+const Colors = styled('div')`
     background-color: grey;
 `;
 
-const Title = styled('h5')/*css*/ `
+const Title = styled('h5')`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +26,7 @@ const Title = styled('h5')/*css*/ `
     font-size: 1rem;
     position: relative;
 `;
-const Emoji = styled('span')/*css*/ `
+const Emoji = styled('span')`
     margin-left: 0.5rem;
     font-size: 1.5rem;
 `;
