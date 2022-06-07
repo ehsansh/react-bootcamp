@@ -4,6 +4,7 @@ import Palette from './Palette';
 import PaletteList from './PaletteList';
 import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
+import SingleColorPalette from './SingleColorPalette';
 function App() {
     return (
         <Routes>
@@ -22,7 +23,10 @@ function App() {
                     />
                 );
             })}
-            <Route path='/palette/:paletteId/:colorId' />
+            <Route
+                path='/palette/:paletteId/:colorId'
+                element={<SingleColorPalette />}
+            />
         </Routes>
     );
 }
