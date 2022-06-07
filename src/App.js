@@ -22,6 +22,7 @@ function App() {
                     />
                 );
             })}
+            <Route path='/palette/:paletteId/:colorId' />
         </Routes>
     );
 }
