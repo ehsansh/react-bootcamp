@@ -13,20 +13,27 @@ function App() {
                 path='/'
                 element={<PaletteList palettes={seedColors} />}
             />
+
             {seedColors.map((s, i) => {
                 return (
-                    <Route
-                        key={i}
-                        exact
-                        path={`/palette/${s.id}`}
-                        element={<Palette palette={generatePalette(s)} />}
-                    />
+                    <>
+                        <Route
+                            key={i}
+                            exact
+                            path={`palette/${s.id}`}
+                            element={<Palette palette={generatePalette(s)} />}
+                        />
+                        <Route
+                            path={`palette/${s.id}/:colorId`}
+                            element={
+                                <SingleColorPalette
+                                    palette={generatePalette(s)}
+                                />
+                            }
+                        />
+                    </>
                 );
             })}
-            <Route
-                path='/palette/:paletteId/:colorId'
-                element={<SingleColorPalette />}
-            />
         </Routes>
     );
 }

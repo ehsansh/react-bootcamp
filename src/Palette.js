@@ -31,6 +31,7 @@ export default class Palette extends Component {
                 key={c.id}
                 id={c.id}
                 paletteId={id}
+                showLink={true}
             />
         ));
         return (
