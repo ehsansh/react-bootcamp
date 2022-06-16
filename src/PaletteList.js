@@ -49,7 +49,11 @@ function PaletteList(props) {
                 </Nav>
                 <Palettes>
                     {palettes.map(p => (
-                        <MiniPalette handleClick={() => goToPalette(p.id)} {...p} />
+                        <MiniPalette
+                            key={p.id}
+                            handleClick={() => goToPalette(p.id)}
+                            {...p}
+                        />
                     ))}
                 </Palettes>
             </Container>
