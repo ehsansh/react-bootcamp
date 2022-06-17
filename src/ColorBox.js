@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import chroma from 'chroma-js';
-import './ColorBox.css';
 
 const ColorBoxContainer = styled.div`
     height: ${props => (props.showLink ? '25%' : '50%')};
