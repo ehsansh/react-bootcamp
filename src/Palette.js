@@ -1,30 +1,11 @@
 import React, { Component } from 'react';
-import styled from '@emotion/styled';
+
 import ColorBox from './ColorBox';
 import PaletteFooter from './PaletteFooter';
 
 import Navbar from './Navbar';
 
-const PaletteContainer = styled.div`
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    & .Palette-footer {
-        background-color: white;
-        height: 5vh;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-weight: bold;
-    }
-    & .emoji {
-        font-size: 1.5rem;
-        margin: 0 1rem;
-    }
-`;
-const PaletteColors = styled.div`
-    height: 90%;
-`;
+import { PaletteColors, PaletteContainer } from './styles/PaletteStyles';
 
 export default class Palette extends Component {
     constructor(props) {

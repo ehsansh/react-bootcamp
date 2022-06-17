@@ -1,10 +1,13 @@
+import { Footer, Emoji } from './styles/PaletteFooterStyles';
+
 function PaletteFooter(props) {
     const { paletteName, emoji } = props;
+
     return (
-        <footer className='Palette-footer'>
+        <Footer>
             {paletteName}
-            <span className='emoji'>{emoji}</span>
-        </footer>
+            <Emoji>{emoji}</Emoji>
+        </Footer>
     );
 }
 
