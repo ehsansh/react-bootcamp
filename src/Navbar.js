@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -10,6 +11,13 @@ import IconButton from '@mui/material/IconButton';
 import 'rc-slider/assets/index.css';
 
 import './Navbar.css';
+
+const NavbarContainer = styled.header`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 6vh;
+`;
 
 export default class Navbar extends Component {
     constructor(props) {
@@ -32,7 +40,7 @@ export default class Navbar extends Component {
         const { level, changeLevel, showAllColors } = this.props;
         const { format, open } = this.state;
         return (
-            <header className='Navbar'>
+            <NavbarContainer>
                 <div className='logo'>
                     <Link to='/'>react colorpicker</Link>
                 </div>
@@ -86,7 +94,7 @@ export default class Navbar extends Component {
                         </IconButton>,
                     ]}
                 />
-            </header>
+            </NavbarContainer>
         );
     }
 }
