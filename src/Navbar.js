@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from '@emotion/styled';
+
 import { Link } from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -10,14 +10,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import 'rc-slider/assets/index.css';
 
-import './Navbar.css';
-
-const NavbarContainer = styled.header`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 6vh;
-`;
+import {
+    SelectContainer,
+    NavbarContainer,
+    Logo,
+    SliderContainer,
+} from './styles/NavbarStyles';
 
 export default class Navbar extends Component {
     constructor(props) {
@@ -41,13 +39,13 @@ export default class Navbar extends Component {
         const { format, open } = this.state;
         return (
             <NavbarContainer>
-                <div className='logo'>
+                <Logo>
                     <Link to='/'>react colorpicker</Link>
-                </div>
+                </Logo>
                 {showAllColors && (
-                    <div className='slider-container'>
+                    <div>
                         <span>Level:{level}</span>
-                        <div className='slider'>
+                        <SliderContainer>
                             <Slider
                                 defaultValue={level}
                                 min={100}
@@ -55,10 +53,10 @@ export default class Navbar extends Component {
                                 step={100}
                                 onAfterChange={changeLevel}
                             />
-                        </div>
+                        </SliderContainer>
                     </div>
                 )}
-                <div className='select-container'>
+                <SelectContainer>
                     <FormControl fullWidth>
                         <Select
                             value={format}
@@ -73,7 +71,7 @@ export default class Navbar extends Component {
                             </MenuItem>
                         </Select>
                     </FormControl>
-                </div>
+                </SelectContainer>
                 <Snackbar
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                     open={open}
