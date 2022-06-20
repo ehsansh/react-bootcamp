@@ -5,6 +5,7 @@ import PaletteList from './PaletteList';
 import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
 import SingleColorPalette from './SingleColorPalette';
+import NewPaletteForm from './NewPaletteForm';
 function App() {
     return (
         <Routes>
@@ -13,7 +14,7 @@ function App() {
                 path='/'
                 element={<PaletteList palettes={seedColors} />}
             />
-
+            <Route exact path='/palette/new' element={<NewPaletteForm />} />
             {seedColors.map((s, i) => {
                 return (
                     <>

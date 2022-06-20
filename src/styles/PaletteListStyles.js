@@ -21,6 +21,10 @@ export const Nav = styled.nav`
     width: 100%;
     justify-content: space-between;
     color: white;
+    align-items: center;
+    & a {
+        color: white;
+    }
 `;
 
 export const Palettes = styled.div`
