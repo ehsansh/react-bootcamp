@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import DraggableColorBox from './DraggableColorBox';
 import { styled } from '@mui/material/styles';
@@ -68,7 +69,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-export default function NewPaletteForm() {
+export default function NewPaletteForm(props) {
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const [colors, setColors] = React.useState([]);
     const [currentColor, setColor] = React.useState('orange');
@@ -93,6 +95,18 @@ export default function NewPaletteForm() {
         setNewName(evt.target.value);
     };
 
+    const handleSubmit = () => {
+        let newName = 'test palette';
+        const newPalette = {
+            paletteName: 'test palette',
+            id: newName.toLocaleLowerCase().replace(/ /g, '-'),
+            colors: colors,
+        };
+        props.savePalette(newPalette);
+
+        navigate('/');
+    };
+
     useEffect(() => {
         ValidatorForm.addValidationRule('isColorNameUnique', value => {
             return colors.every(({ name }) => {
@@ -110,7 +124,7 @@ export default function NewPaletteForm() {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position='fixed' open={open}>
+            <AppBar position='fixed' color='default' open={open}>
                 <Toolbar>
                     <IconButton
                         color='inherit'
@@ -124,6 +138,13 @@ export default function NewPaletteForm() {
                     <Typography variant='h6' noWrap component='div'>
                         Persistent drawer
                     </Typography>
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        onClick={handleSubmit}
+                    >
+                        Save Palette
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -158,7 +179,6 @@ export default function NewPaletteForm() {
                     color={currentColor}
                     onChangeComplete={updateCurrentColor}
                 />
-                <p>{newName}</p>
                 <ValidatorForm onSubmit={addNewColors}>
                     <TextValidator
                         value={newName}
