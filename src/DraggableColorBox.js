@@ -37,7 +37,7 @@ export default function DraggableColorBox(props) {
         <Root style={{ backgroundColor: props.color }}>
             <BoxContent>
                 <span>{props.name}</span>
-                <DeleteIcon />
+                <DeleteIcon onClick={props.handleClick} />
             </BoxContent>
         </Root>
     );
