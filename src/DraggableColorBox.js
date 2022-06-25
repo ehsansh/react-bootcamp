@@ -12,5 +12,5 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 export default function DraggableColorBox(props) {
-    return <Root style={{ backgroundColor: props.color }}>{props.color}</Root>;
+    return <Root style={{ backgroundColor: props.color }}>{props.name}</Root>;
 }
