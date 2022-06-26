@@ -32,6 +32,16 @@ const AppBar = styled(MuiAppBar, {
             duration: theme.transitions.duration.enteringScreen,
         }),
     }),
+    flexDirection: 'row',
+    justifyContent: 'sapce-between',
+    display: 'flex',
+    height: '64px',
+}));
+
+const NavBtns = styled('div')(({ theme }) => ({}));
+
+const Root = styled('div')(({ theme }) => ({
+    // display: 'flex',
 }));
 
 export default function PaletteFormNav(props) {
@@ -55,7 +65,7 @@ export default function PaletteFormNav(props) {
     });
 
     return (
-        <div>
+        <Root>
             <CssBaseline />
             <AppBar position='fixed' color='default' open={open}>
                 <Toolbar>
@@ -69,8 +79,10 @@ export default function PaletteFormNav(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant='h6' noWrap component='div'>
-                        Persistent drawer
+                        Create a palette
                     </Typography>
+                </Toolbar>
+                <NavBtns>
                     <ValidatorForm onSubmit={handleSubmit}>
                         <TextValidator
                             label='palette name'
@@ -89,14 +101,14 @@ export default function PaletteFormNav(props) {
                         >
                             Save Palette
                         </Button>
-                        <Link to='/'>
-                            <Button variant='contained' color='secondary'>
-                                Go Back
-                            </Button>
-                        </Link>
                     </ValidatorForm>
-                </Toolbar>
+                    <Link to='/'>
+                        <Button variant='contained' color='secondary'>
+                            Go Back
+                        </Button>
+                    </Link>
+                </NavBtns>
             </AppBar>
-        </div>
+        </Root>
     );
 }
