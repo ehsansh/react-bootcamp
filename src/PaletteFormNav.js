@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-
+import { useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -46,6 +46,13 @@ export default function PaletteFormNav(props) {
     const updatePaletteNameHandler = evt => {
         updatePaletteName(evt);
     };
+    useEffect(() => {
+        ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
+            return props.palettes.every(({ paletteName }) => {
+                return paletteName.toLowerCase() !== value.toLowerCase();
+            });
+        });
+    });
 
     return (
         <div>
