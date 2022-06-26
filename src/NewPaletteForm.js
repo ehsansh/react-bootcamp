@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import DraggableColorBox from './DraggableColorBox';
@@ -183,6 +184,11 @@ export default function NewPaletteForm(props) {
                         >
                             Save Palette
                         </Button>
+                        <Link to='/'>
+                            <Button variant='contained' color='secondary'>
+                                Go Back
+                            </Button>
+                        </Link>
                     </ValidatorForm>
                 </Toolbar>
             </AppBar>
