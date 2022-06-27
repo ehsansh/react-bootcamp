@@ -4,14 +4,16 @@ import SimpleFormHook from './SimpleFormHook';
 import SimpleFormCustomHook from './SimpleFormCustomHook';
 import Clicker from './Clicker';
 import Toggler from './Toggler';
+import Movies from './Movies';
 function App() {
     return (
         <div className='App'>
-            <CounterHooks />
+            {/* <CounterHooks />
             <Toggler />
             <SimpleFormHook />
             <SimpleFormCustomHook />
-            <Clicker />
+            <Clicker /> */}
+            <Movies />
         </div>
     );
 }
