@@ -6,24 +6,26 @@ import Divider from '@mui/material/Divider';
 import Todo from './Todo';
 
 export default function TodoList(props) {
-    return (
-        <Paper>
-            <List>
-                {props.todos.map((todo, i) => (
-                    <>
-                        <Todo
-                            task={todo.task}
-                            key={todo.id}
-                            id={todo.id}
-                            completed={todo.completed}
-                            removeTodo={props.removeTodo}
-                            toggledTodo={props.toggledTodo}
-                            editTodo={props.editTodo}
-                        />
-                        {i < props.todos.length - 1 && <Divider />}
-                    </>
-                ))}
-            </List>
-        </Paper>
-    );
+    if (props.todos.length)
+        return (
+            <Paper>
+                <List>
+                    {props.todos.map((todo, i) => (
+                        <>
+                            <Todo
+                                task={todo.task}
+                                key={todo.id}
+                                id={todo.id}
+                                completed={todo.completed}
+                                removeTodo={props.removeTodo}
+                                toggledTodo={props.toggledTodo}
+                                editTodo={props.editTodo}
+                            />
+                            {i < props.todos.length - 1 && <Divider />}
+                        </>
+                    ))}
+                </List>
+            </Paper>
+        );
+    return null;
 }
