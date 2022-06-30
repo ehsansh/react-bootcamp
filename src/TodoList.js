@@ -14,7 +14,10 @@ export default function TodoList(props) {
                         <Todo
                             task={todo.task}
                             key={todo.id}
+                            id={todo.id}
                             completed={todo.completed}
+                            removeTodo={props.removeTodo}
+                            toggledTodo={props.toggledTodo}
                         />
                         <Divider />
                     </>

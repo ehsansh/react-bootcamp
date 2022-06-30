@@ -6,17 +6,21 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
-export default function Todo({ task, completed }) {
+export default function Todo({ task, completed, removeTodo, toggledTodo, id }) {
     return (
         <ListItem>
-            <Checkbox tabIndex='-1' checked={completed} />
+            <Checkbox
+                tabIndex='-1'
+                checked={completed}
+                onClick={() => toggledTodo(id)}
+            />
             <ListItemText
                 style={{ textDecoration: completed ? 'line-through' : 'none' }}
             >
                 {task}
             </ListItemText>
             <ListItemSecondaryAction>
-                <IconButton>
+                <IconButton onClick={() => removeTodo(id)}>
                     <DeleteIcon />
                 </IconButton>
                 <IconButton>
