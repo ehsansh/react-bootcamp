@@ -18,6 +18,7 @@ export default function TodoList(props) {
                             completed={todo.completed}
                             removeTodo={props.removeTodo}
                             toggledTodo={props.toggledTodo}
+                            editTodo={props.editTodo}
                         />
                         <Divider />
                     </>
