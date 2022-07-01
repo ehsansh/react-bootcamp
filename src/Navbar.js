@@ -7,10 +7,12 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Switch from '@mui/material/Switch';
 import { ThemeContext } from './contexts/ThemeContext';
-export default class Navbar extends Component {
+import { withLanguageContext } from './contexts/LanguageContext';
+class Navbar extends Component {
     static contextType = ThemeContext;
     render() {
         const { isDarkMode, toggleTheme } = this.context;
+        const { language } = this.props.languageContext;
         return (
             <div>
                 <AppBar
@@ -20,7 +22,7 @@ export default class Navbar extends Component {
                     <Toolbar>
                         <IconButton color='inherit'></IconButton>
                         <Typography variant='h6' color='inherit'>
-                            App Title
+                            App Title {language}
                         </Typography>
                         <Switch onClick={toggleTheme} />
                         <div className='search'>
@@ -35,3 +37,4 @@ export default class Navbar extends Component {
         );
     }
 }
+export default withLanguageContext(Navbar);
