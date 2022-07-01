@@ -10,7 +10,7 @@ import { ThemeContext } from './contexts/ThemeContext';
 export default class Navbar extends Component {
     static contextType = ThemeContext;
     render() {
-        const { isDarkMode } = this.context;
+        const { isDarkMode, toggleTheme } = this.context;
         return (
             <div>
                 <AppBar
@@ -22,7 +22,7 @@ export default class Navbar extends Component {
                         <Typography variant='h6' color='inherit'>
                             App Title
                         </Typography>
-                        <Switch />
+                        <Switch onClick={toggleTheme} />
                         <div className='search'>
                             <div className='searhcIcon'>
                                 <SearchIcon />

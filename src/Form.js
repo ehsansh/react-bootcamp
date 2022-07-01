@@ -11,17 +11,21 @@ import Input from '@mui/material/Input';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { LanguageContext } from './contexts/LanguageContext';
 
 export default class Form extends Component {
+    static contextType = LanguageContext;
     render() {
+        const { language, changeLanguage } = this.context;
         return (
             <main>
                 <Paper>
+                    <p>language is : {language}</p>
                     <Avatar>
                         <LockOutlinedIcon></LockOutlinedIcon>
                     </Avatar>
                     <Typography variant='h5'>sign in</Typography>
-                    <Select value='french'>
+                    <Select value={language} onChange={changeLanguage}>
                         <MenuItem value='english'>English</MenuItem>
                         <MenuItem value='persian'>Persian</MenuItem>
                         <MenuItem value='french'>French</MenuItem>
