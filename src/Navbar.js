@@ -6,11 +6,17 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Switch from '@mui/material/Switch';
+import { ThemeContext } from './contexts/ThemeContext';
 export default class Navbar extends Component {
+    static contextType = ThemeContext;
     render() {
+        const { isDarkMode } = this.context;
         return (
             <div>
-                <AppBar position='static' color='primary'>
+                <AppBar
+                    position='static'
+                    color={isDarkMode ? 'default' : 'primary'}
+                >
                     <Toolbar>
                         <IconButton color='inherit'></IconButton>
                         <Typography variant='h6' color='inherit'>
