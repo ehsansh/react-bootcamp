@@ -13,7 +13,7 @@ import EditTodoForm from './EditTodoForm';
 import { TodosContext } from './context/todos.context';
 
 export default function Todo({ id, task, completed }) {
-    const { removeTodo, toggledTodo } = useContext(TodosContext);
+    const { dispatch } = useContext(TodosContext);
     const [isEditing, toggle] = useToggle(false);
     return (
         <ListItem style={{ height: '64px' }}>
@@ -24,7 +24,7 @@ export default function Todo({ id, task, completed }) {
                     <Checkbox
                         tabIndex='-1'
                         checked={completed}
-                        onClick={() => toggledTodo(id)}
+                        onClick={() => dispatch({ type: 'toggle', id: id })}
                     />
                     <ListItemText
                         style={{
@@ -34,7 +34,9 @@ export default function Todo({ id, task, completed }) {
                         {task}
                     </ListItemText>
                     <ListItemSecondaryAction>
-                        <IconButton onClick={() => removeTodo(id)}>
+                        <IconButton
+                            onClick={() => dispatch({ type: 'remove', id: id })}
+                        >
                             <DeleteIcon />
                         </IconButton>
                         <IconButton onClick={toggle}>
