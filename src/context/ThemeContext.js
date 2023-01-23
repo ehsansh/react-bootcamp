@@ -16,8 +16,12 @@ export const ThemeContextProvider = ({ children }) => {
         bg: '#555',
     });
 
+    const toggleTheme = () => setIsLightTheme(!isLightTheme);
+
     return (
-        <ThemeContext.Provider value={{ isLightTheme, light, dark }}>
+        <ThemeContext.Provider
+            value={{ isLightTheme, light, dark, toggleTheme }}
+        >
             {children}
         </ThemeContext.Provider>
     );
