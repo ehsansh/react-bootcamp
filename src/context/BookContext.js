@@ -11,8 +11,8 @@ export const BookContextProvider = ({ children }) => {
             id: 1,
         },
         {
-            title: 'title1',
-            author: 'authro1',
+            title: 'title2',
+            author: 'authro2',
             id: 2,
         },
     ]);
@@ -20,10 +20,10 @@ export const BookContextProvider = ({ children }) => {
     const addBooks = (title, author) => {
         setBooks([...books, { title, author, id: uuidv4() }]);
     };
-    const removeBooks = id => setBooks(books.filter(book => book.id !== id));
+    const removeBook = id => setBooks(books.filter(book => book.id !== id));
 
     return (
-        <BookContext.Provider value={{ books, addBooks, removeBooks }}>
+        <BookContext.Provider value={{ books, addBooks, removeBook }}>
             {children}
         </BookContext.Provider>
     );
