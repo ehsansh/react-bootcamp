@@ -5,11 +5,14 @@ const BookForm = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
 
-    const { addBooks } = useContext(BookContext);
+    const { dispatch } = useContext(BookContext);
 
     const submit = e => {
         e.preventDefault();
-        addBooks(title, author);
+        dispatch({
+            type: 'ADD_BOOK',
+            book: { title, author },
+        });
     };
 
     return (
